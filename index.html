@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="tool">
+  <meta name="design-style" content="aurora">
+  <title>E9 ペダルスチール 3rdフレット (Key of G) ダイアトニックコード</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+
+      /* Page and surfaces: deep oceanic slate steps (Aurora) */
+      --background: #0c1214;
+      --surface-container-low: #111a1e;
+      --surface-container: #152024;
+      --surface-container-high: #1c2a30;
+
+      /* Text */
+      --on-surface: #edf3f5;
+      --on-surface-variant: #94a8b0;
+
+      /* Borders */
+      --outline: #38515c;
+      --outline-variant: #213138;
+
+      /* Accents */
+      --primary: #63c7d6;
+      --on-primary: #081214;
+      --primary-container: #163840;
+      --on-primary-container: #c7f0f7;
+      --secondary: #5d7882;
+      --tertiary: #87d69b;
+      --error: #f27474;
+      --on-error: #1a0606;
+
+      /* Data series */
+      --data-1: #63c7d6;
+      --data-2: #87d69b;
+      --data-3: #e8b954;
+      --data-4: #f08c70;
+      --data-context: #415861;
+
+      /* Troy Diagram Pedal & Lever Color Coding */
+      --pedal-a: #4d9eff;
+      --pedal-a-bg: color-mix(in srgb, var(--pedal-a) 16%, var(--surface-container));
+      --pedal-b: #4ade80;
+      --pedal-b-bg: color-mix(in srgb, var(--pedal-b) 16%, var(--surface-container));
+      --pedal-c: #f472b6;
+      --pedal-c-bg: color-mix(in srgb, var(--pedal-c) 16%, var(--surface-container));
+      --lever-f: #c084fc;
+      --lever-f-bg: color-mix(in srgb, var(--lever-f) 16%, var(--surface-container));
+      --lever-e: #f5a623;
+      --lever-e-bg: color-mix(in srgb, var(--lever-e) 16%, var(--surface-container));
+      --chord-play: #f87171;
+      --chord-play-bg: color-mix(in srgb, var(--chord-play) 14%, var(--surface-container));
+      --muted-tone: #6b808a;
+      --muted-bg: color-mix(in srgb, var(--muted-tone) 10%, var(--background));
+      --string-wire: #344a54;
+      --string-wire-active: #6b8894;
+      --fret-rail: #46606b;
+
+      /* Semantic & Focus */
+      --positive: #87d69b;
+      --warning: #e8b954;
+      --focus: #63c7d6;
+
+      /* Fonts (Noto Sans JP first for Japanese text) */
+      --font-headline: 'Noto Sans JP', 'Instrument Sans', sans-serif;
+      --font-body: 'Noto Sans JP', 'Plus Jakarta Sans', sans-serif;
+      --font-label: 'Geist Mono', 'Noto Sans JP', monospace;
+
+      /* Type scale (Focused Tool) */
+      --display-size: clamp(1.375rem, 1.15rem + 1.1vw, 1.875rem);
+      --headline-size: clamp(1.125rem, 1rem + 0.45vw, 1.375rem);
+      --subhead-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --body-size: clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
+      --label-size: 0.75rem;
+
+      /* Shape */
+      --rounded: 0.5rem;
+      --rounded-lg: 0.75rem;
+      --rounded-full: 9999px;
+
+      /* Style effects */
+      --hairline: 1px solid var(--outline-variant);
+      --hairline-strong: 1px solid var(--outline);
+      --panel-gradient: linear-gradient(180deg, #162226 0%, #111a1e 100%);
+      --heading-tracking: -0.015em;
+      --label-tracking: 0.04em;
+      --sage-tint: color-mix(in srgb, var(--tertiary) 13%, transparent);
+      --cyan-tint: color-mix(in srgb, var(--primary) 13%, transparent);
+      --amber-tint: color-mix(in srgb, var(--warning) 14%, transparent);
+
+      /* Spacing scale (4pt base) */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.55;
+      -webkit-tap-highlight-color: transparent;
+    }
+    header { position: static !important; }
+    button, input, select, textarea { font-family: inherit; }
+
+    :focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .app-shell {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: var(--space-md);
+      display: grid;
+      gap: var(--space-md);
+    }
+    .app-shell * { min-width: 0; }
+
+    /* Header */
+    .app-header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding-bottom: var(--space-sm);
+      border-bottom: var(--hairline);
+    }
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+    .title-group h1 {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-size: var(--display-size);
+      font-weight: 700;
+      letter-spacing: var(--heading-tracking);
+      line-height: 1.18;
+      color: var(--on-surface);
+    }
+    .title-sub {
+      margin: var(--space-xs) 0 0;
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+    }
+    .mono-tag {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      letter-spacing: var(--label-tracking);
+      color: var(--on-surface-variant);
+    }
+
+    /* Sound Activation Bar */
+    .audio-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--panel-gradient);
+      border: var(--hairline);
+      border-radius: var(--rounded-lg);
+      flex-wrap: wrap;
+    }
+    .audio-bar.is-ready {
+      border-color: color-mix(in srgb, var(--tertiary) 45%, var(--outline-variant));
+    }
+    .audio-status-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex: 1 1 180px;
+    }
+    .audio-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: var(--rounded-full);
+      background: var(--warning);
+      flex-shrink: 0;
+    }
+    .audio-bar.is-ready .audio-dot {
+      background: var(--tertiary);
+    }
+    .audio-status-text {
+      font-size: 0.8125rem;
+      color: var(--on-surface-variant);
+    }
+    .audio-bar.is-ready .audio-status-text {
+      color: var(--on-surface);
+    }
+
+    .btn-sound-start {
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      border: 1px solid transparent;
+      background: var(--primary);
+      color: var(--on-primary);
+      font-weight: 700;
+      font-size: 0.875rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      transition: background-color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+    }
+    .btn-sound-start:hover {
+      background: color-mix(in srgb, var(--primary) 88%, var(--on-surface));
+    }
+    .btn-sound-start:active {
+      transform: scale(0.98);
+    }
+    .btn-sound-start.is-unlocked {
+      background: var(--sage-tint);
+      color: var(--tertiary);
+      border-color: color-mix(in srgb, var(--tertiary) 40%, transparent);
+    }
+
+    /* Panels */
+    .panel {
+      background: var(--panel-gradient);
+      border: var(--hairline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: grid;
+      gap: var(--space-md);
+    }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    .section-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-size: var(--subhead-size);
+      font-weight: 700;
+      color: var(--on-surface);
+    }
+    .section-hint {
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+    }
+
+    /* Diatonic Chord Selector Grid */
+    .chord-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+    .chord-btn {
+      min-height: 54px;
+      padding: var(--space-xs) var(--space-xs);
+      border-radius: var(--rounded);
+      border: var(--hairline-strong);
+      background: var(--background);
+      color: var(--on-surface);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+    }
+    .chord-btn:hover {
+      background: var(--surface-container-high);
+    }
+    .chord-btn:active {
+      transform: scale(0.97);
+    }
+    .chord-btn.is-active {
+      background: var(--primary-container);
+      border-color: var(--primary);
+      box-shadow: inset 0 0 0 1px var(--primary);
+    }
+    .chord-deg {
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      color: var(--on-surface-variant);
+      line-height: 1.1;
+    }
+    .chord-btn.is-active .chord-deg {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .chord-name {
+      font-family: var(--font-headline);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--on-surface);
+    }
+    .chord-btn.is-active .chord-name {
+      color: var(--on-primary-container);
+    }
+    .chord-combo-mini {
+      font-family: var(--font-label);
+      font-size: 0.625rem;
+      color: var(--on-surface-variant);
+    }
+
+    /* Current Chord Readout & Strum Bar */
+    .readout-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--background);
+      border: var(--hairline);
+      border-radius: var(--rounded);
+      flex-wrap: wrap;
+    }
+    .readout-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1 1 170px;
+    }
+    .readout-chord-title {
+      font-family: var(--font-headline);
+      font-size: var(--headline-size);
+      font-weight: 700;
+      color: var(--on-surface);
+      line-height: 1.2;
+    }
+    .readout-chord-sub {
+      font-size: 0.8125rem;
+      color: var(--on-surface-variant);
+    }
+    .readout-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    .btn-strum {
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      border: 0;
+      background: var(--primary);
+      color: var(--on-primary);
+      font-weight: 700;
+      font-size: 0.9375rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: background-color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+    }
+    .btn-strum:hover {
+      background: color-mix(in srgb, var(--primary) 88%, var(--on-surface));
+    }
+    .btn-strum:active {
+      transform: scale(0.97);
+    }
+    .btn-autoplay {
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--rounded);
+      border: var(--hairline-strong);
+      background: var(--surface-container);
+      color: var(--on-surface-variant);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .btn-autoplay.is-on {
+      background: var(--cyan-tint);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Pedals (A, B, C) & Knee Levers (F, E) Deck */
+    .mechanics-wrap {
+      display: grid;
+      gap: var(--space-sm);
+    }
+    .mechanics-row-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+    }
+    .pedals-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+    .levers-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+    .mech-btn {
+      min-height: 68px;
+      padding: var(--space-sm);
+      border-radius: var(--rounded);
+      border: var(--hairline);
+      background: var(--muted-bg);
+      color: var(--muted-tone);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-xs);
+      text-align: left;
+      transition: background-color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+    }
+    .mech-btn:hover {
+      border-color: var(--outline);
+    }
+    .mech-btn:active {
+      transform: scale(0.98);
+    }
+    .mech-top {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-xs);
+    }
+    .mech-code {
+      font-family: var(--font-headline);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .mech-state-pill {
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: var(--rounded);
+      background: var(--surface-container);
+      color: var(--muted-tone);
+      border: var(--hairline);
+    }
+    .mech-desc {
+      font-size: 0.75rem;
+      line-height: 1.3;
+      color: var(--muted-tone);
+    }
+
+    /* Active Color States for A, B, C, F, E */
+    .mech-btn.is-active[data-mech="A"] {
+      background: var(--pedal-a-bg);
+      border-color: var(--pedal-a);
+      color: var(--on-surface);
+      box-shadow: inset 0 0 0 1px var(--pedal-a);
+    }
+    .mech-btn.is-active[data-mech="A"] .mech-code,
+    .mech-btn.is-active[data-mech="A"] .mech-desc { color: var(--pedal-a); }
+    .mech-btn.is-active[data-mech="A"] .mech-state-pill {
+      background: var(--pedal-a);
+      color: var(--on-primary);
+      border-color: var(--pedal-a);
+    }
+
+    .mech-btn.is-active[data-mech="B"] {
+      background: var(--pedal-b-bg);
+      border-color: var(--pedal-b);
+      color: var(--on-surface);
+      box-shadow: inset 0 0 0 1px var(--pedal-b);
+    }
+    .mech-btn.is-active[data-mech="B"] .mech-code,
+    .mech-btn.is-active[data-mech="B"] .mech-desc { color: var(--pedal-b); }
+    .mech-btn.is-active[data-mech="B"] .mech-state-pill {
+      background: var(--pedal-b);
+      color: var(--on-primary);
+      border-color: var(--pedal-b);
+    }
+
+    .mech-btn.is-active[data-mech="C"] {
+      background: var(--pedal-c-bg);
+      border-color: var(--pedal-c);
+      color: var(--on-surface);
+      box-shadow: inset 0 0 0 1px var(--pedal-c);
+    }
+    .mech-btn.is-active[data-mech="C"] .mech-code,
+    .mech-btn.is-active[data-mech="C"] .mech-desc { color: var(--pedal-c); }
+    .mech-btn.is-active[data-mech="C"] .mech-state-pill {
+      background: var(--pedal-c);
+      color: var(--on-primary);
+      border-color: var(--pedal-c);
+    }
+
+    .mech-btn.is-active[data-mech="F"] {
+      background: var(--lever-f-bg);
+      border-color: var(--lever-f);
+      color: var(--on-surface);
+      box-shadow: inset 0 0 0 1px var(--lever-f);
+    }
+    .mech-btn.is-active[data-mech="F"] .mech-code,
+    .mech-btn.is-active[data-mech="F"] .mech-desc { color: var(--lever-f); }
+    .mech-btn.is-active[data-mech="F"] .mech-state-pill {
+      background: var(--lever-f);
+      color: var(--on-primary);
+      border-color: var(--lever-f);
+    }
+
+    .mech-btn.is-active[data-mech="E"] {
+      background: var(--lever-e-bg);
+      border-color: var(--lever-e);
+      color: var(--on-surface);
+      box-shadow: inset 0 0 0 1px var(--lever-e);
+    }
+    .mech-btn.is-active[data-mech="E"] .mech-code,
+    .mech-btn.is-active[data-mech="E"] .mech-desc { color: var(--lever-e); }
+    .mech-btn.is-active[data-mech="E"] .mech-state-pill {
+      background: var(--lever-e);
+      color: var(--on-primary);
+      border-color: var(--lever-e);
+    }
+
+    .mech-notice {
+      font-size: 0.75rem;
+      color: var(--on-surface-variant);
+      min-height: 1.2em;
+    }
+
+    /* 10-String Fretboard Diagram */
+    .diagram-header-cols {
+      display: grid;
+      grid-template-columns: 36px 1fr 78px 68px;
+      gap: var(--space-xs);
+      padding: 0 var(--space-sm);
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      color: var(--on-surface-variant);
+    }
+    .diagram-board {
+      position: relative;
+      background: var(--background);
+      border: var(--hairline);
+      border-left: 4px solid var(--fret-rail);
+      border-radius: var(--rounded);
+      padding: var(--space-xs);
+      display: grid;
+      gap: 6px;
+    }
+    .string-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: 36px 1fr 78px 68px;
+      align-items: center;
+      gap: var(--space-xs);
+      min-height: 46px;
+      padding: 4px var(--space-xs);
+      border-radius: var(--rounded);
+      border: 1px solid transparent;
+      background: var(--surface-container-low);
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+    }
+    .string-row::before {
+      content: "";
+      position: absolute;
+      left: 36px;
+      right: 72px;
+      top: 50%;
+      height: var(--string-gauge, 1.5px);
+      background: var(--string-wire);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .string-row.is-played::before {
+      background: var(--string-wire-active);
+    }
+    .string-row.is-played {
+      background: var(--surface-container);
+      border-color: var(--outline-variant);
+    }
+    .string-row.is-muted {
+      background: var(--muted-bg);
+      opacity: 0.78;
+    }
+    .string-row.is-ringing {
+      border-color: var(--primary);
+      background: var(--primary-container);
+    }
+
+    /* String Number */
+    .str-num-btn {
+      position: relative;
+      z-index: 1;
+      width: 32px;
+      height: 36px;
+      border-radius: var(--rounded);
+      border: var(--hairline);
+      background: var(--surface-container-high);
+      color: var(--on-surface);
+      font-family: var(--font-label);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .string-row.is-muted .str-num-btn {
+      color: var(--muted-tone);
+      background: var(--background);
+    }
+
+    /* Main tappable Note Zone */
+    .str-note-btn {
+      position: relative;
+      z-index: 1;
+      min-height: 40px;
+      padding: 2px var(--space-sm);
+      border: 0;
+      border-radius: var(--rounded);
+      background: transparent;
+      color: var(--on-surface);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      text-align: left;
+    }
+    .str-note-btn:active {
+      transform: scale(0.98);
+    }
+
+    .note-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--rounded);
+      background: var(--background);
+      border: 1px solid var(--outline-variant);
+      font-family: var(--font-label);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .note-pill.tone-play {
+      background: var(--chord-play-bg);
+      border-color: var(--chord-play);
+      color: var(--chord-play);
+    }
+    .note-pill.tone-muted {
+      background: var(--background);
+      border-color: var(--outline-variant);
+      color: var(--muted-tone);
+    }
+    .note-pill.tone-A {
+      background: var(--pedal-a-bg);
+      border-color: var(--pedal-a);
+      color: var(--pedal-a);
+    }
+    .note-pill.tone-B {
+      background: var(--pedal-b-bg);
+      border-color: var(--pedal-b);
+      color: var(--pedal-b);
+    }
+    .note-pill.tone-C {
+      background: var(--pedal-c-bg);
+      border-color: var(--pedal-c);
+      color: var(--pedal-c);
+    }
+    .note-pill.tone-F {
+      background: var(--lever-f-bg);
+      border-color: var(--lever-f);
+      color: var(--lever-f);
+    }
+    .note-pill.tone-E {
+      background: var(--lever-e-bg);
+      border-color: var(--lever-e);
+      color: var(--lever-e);
+    }
+    .note-origin {
+      font-size: 0.75rem;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+
+    .mech-badge {
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: var(--rounded);
+      white-space: nowrap;
+    }
+    .mech-badge.badge-A { background: var(--pedal-a-bg); color: var(--pedal-a); }
+    .mech-badge.badge-B { background: var(--pedal-b-bg); color: var(--pedal-b); }
+    .mech-badge.badge-C { background: var(--pedal-c-bg); color: var(--pedal-c); }
+    .mech-badge.badge-F { background: var(--lever-f-bg); color: var(--lever-f); }
+    .mech-badge.badge-E { background: var(--lever-e-bg); color: var(--lever-e); }
+
+    /* Chord Tone Column */
+    .str-tone-cell {
+      position: relative;
+      z-index: 1;
+      text-align: right;
+      font-family: var(--font-label);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--on-surface);
+      padding-right: 4px;
+    }
+    .string-row.is-muted .str-tone-cell {
+      color: var(--muted-tone);
+      font-weight: 400;
+    }
+    .str-tone-root {
+      color: var(--tertiary);
+    }
+
+    /* Play/Mute Toggle Button */
+    .str-mute-btn {
+      position: relative;
+      z-index: 1;
+      min-height: 36px;
+      padding: 2px 6px;
+      border-radius: var(--rounded);
+      border: 1px solid var(--chord-play);
+      background: var(--chord-play-bg);
+      color: var(--chord-play);
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .str-mute-btn.is-muted {
+      border-color: var(--outline-variant);
+      background: var(--background);
+      color: var(--muted-tone);
+      font-weight: 500;
+    }
+
+    /* Grips & Legend Section */
+    .grips-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .grip-btn {
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded);
+      border: var(--hairline-strong);
+      background: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-label);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .grip-btn:hover {
+      border-color: var(--primary);
+      background: var(--surface-container-high);
+    }
+    .grip-btn span {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: var(--on-surface-variant);
+      font-weight: 500;
+    }
+
+    .legend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--space-xs);
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: 0.75rem;
+      color: var(--on-surface-variant);
+      padding: 4px var(--space-xs);
+    }
+    .legend-swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .swatch-play { background: var(--chord-play); }
+    .swatch-A { background: var(--pedal-a); }
+    .swatch-B { background: var(--pedal-b); }
+    .swatch-C { background: var(--pedal-c); }
+    .swatch-F { background: var(--lever-f); }
+    .swatch-E { background: var(--lever-e); }
+    .swatch-muted { background: var(--muted-tone); }
+
+    .note-box {
+      background: var(--background);
+      border: var(--hairline);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+      font-size: 0.8125rem;
+      color: var(--on-surface-variant);
+      line-height: 1.6;
+    }
+    .note-box p { margin: 0; }
+    .note-box p + p { margin-top: var(--space-xs); }
+
+    .app-footer {
+      padding: var(--space-sm) 0 var(--space-lg);
+      font-size: 0.75rem;
+      color: var(--on-surface-variant);
+      border-top: var(--hairline);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .btn-reset-link {
+      background: transparent;
+      border: var(--hairline);
+      border-radius: var(--rounded);
+      color: var(--on-surface-variant);
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      min-height: 36px;
+    }
+    .btn-reset-link:hover {
+      color: var(--on-surface);
+      border-color: var(--outline);
+    }
+
+    @media (max-width: 640px) {
+      .app-shell { padding: var(--space-sm); gap: var(--space-sm); }
+      .panel { padding: var(--space-sm); gap: var(--space-sm); }
+      .chord-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+      .diagram-header-cols,
+      .string-row {
+        grid-template-columns: 32px 1fr 66px 60px;
+      }
+      .string-row::before {
+        left: 32px;
+        right: 64px;
+      }
+      .note-pill {
+        padding: 3px 7px;
+        font-size: 0.875rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div class="header-top">
+        <div class="title-group">
+          <h1>E9 ペダルスチール ダイアトニックコード</h1>
+          <p class="title-sub">3rdフレット / Key of G（Emmons 10弦セットアップ）— 1フレット完結ポジション</p>
+        </div>
+        <span class="mono-tag">FRET 3 · KEY G</span>
+      </div>
+
+      <div class="audio-bar" id="audio-bar">
+        <div class="audio-status-wrap">
+          <span class="audio-dot" aria-hidden="true"></span>
+          <span class="audio-status-text" id="audio-status-text">モバイル再生のため、まず音声を有効化してください</span>
+        </div>
+        <button type="button" class="btn-sound-start" id="btn-sound-start" onclick="enableAudio()">
+          サウンド有効化（音声スタート）
+        </button>
+      </div>
+    </header>
+
+    <!-- 1. Diatonic Chord Selector -->
+    <section class="panel" aria-label="ダイアトニックコード選択">
+      <div class="section-head">
+        <h2 class="section-title">1. ダイアトニックコード選択（Key of G）</h2>
+        <span class="section-hint">ナッシュビル・ナンバー</span>
+      </div>
+      <div class="chord-grid" id="chord-grid">
+        <button type="button" class="chord-btn is-active" data-chord="G" onclick="selectChord('G')">
+          <span class="chord-deg">1</span>
+          <span class="chord-name">G</span>
+          <span class="chord-combo-mini">Open</span>
+        </button>
+        <button type="button" class="chord-btn" data-chord="Am" onclick="selectChord('Am')">
+          <span class="chord-deg">2m</span>
+          <span class="chord-name">Am</span>
+          <span class="chord-combo-mini">B+C</span>
+        </button>
+        <button type="button" class="chord-btn" data-chord="Bm" onclick="selectChord('Bm')">
+          <span class="chord-deg">3m</span>
+          <span class="chord-name">Bm</span>
+          <span class="chord-combo-mini">E</span>
+        </button>
+        <button type="button" class="chord-btn" data-chord="C" onclick="selectChord('C')">
+          <span class="chord-deg">4</span>
+          <span class="chord-name">C</span>
+          <span class="chord-combo-mini">A+B</span>
+        </button>
+        <button type="button" class="chord-btn" data-chord="D7" onclick="selectChord('D7')">
+          <span class="chord-deg">5</span>
+          <span class="chord-name">D7</span>
+          <span class="chord-combo-mini">B+E</span>
+        </button>
+        <button type="button" class="chord-btn" data-chord="Em" onclick="selectChord('Em')">
+          <span class="chord-deg">6m</span>
+          <span class="chord-name">Em</span>
+          <span class="chord-combo-mini">A</span>
+        </button>
+        <button type="button" class="chord-btn" data-chord="F#dim" onclick="selectChord('F#dim')">
+          <span class="chord-deg">7dim</span>
+          <span class="chord-name">F#dim</span>
+          <span class="chord-combo-mini">B+E</span>
+        </button>
+      </div>
+
+      <div class="readout-bar">
+        <div class="readout-info">
+          <div class="readout-chord-title" id="readout-chord-title">1 : G メジャー</div>
+          <div class="readout-chord-sub" id="readout-chord-sub">ペダル・レバーなし（Open）</div>
+        </div>
+        <div class="readout-actions">
+          <button type="button" class="btn-autoplay is-on" id="btn-autoplay" onclick="toggleAutoPlay()" aria-pressed="true">
+            切替時試聴: ON
+          </button>
+          <button type="button" class="btn-strum" id="btn-strum" onclick="strumCurrentChord()">
+            ▶ 和音を鳴らす
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Pedals (A, B, C) & Knee Levers (F, E) -->
+    <section class="panel" aria-label="ペダルおよびニーレバー操作">
+      <div class="section-head">
+        <h2 class="section-title">2. ペダル &amp; ニーレバー操作</h2>
+        <span class="section-hint">タップでON/OFF個別検証</span>
+      </div>
+
+      <div class="mechanics-wrap">
+        <div class="mechanics-row-label">
+          <span>フットペダル（左から A · B · C）</span>
+          <span class="mono-tag">FOOT PEDALS</span>
+        </div>
+        <div class="pedals-grid">
+          <button type="button" class="mech-btn" id="mech-A" data-mech="A" onclick="toggleMech('A')" aria-pressed="false">
+            <div class="mech-top">
+              <span class="mech-code">A ペダル</span>
+              <span class="mech-state-pill" id="pill-A">OFF</span>
+            </div>
+            <span class="mech-desc">10・5弦 +全音<br>(D → E)</span>
+          </button>
+          <button type="button" class="mech-btn" id="mech-B" data-mech="B" onclick="toggleMech('B')" aria-pressed="false">
+            <div class="mech-top">
+              <span class="mech-code">B ペダル</span>
+              <span class="mech-state-pill" id="pill-B">OFF</span>
+            </div>
+            <span class="mech-desc">6・3弦 +半音<br>(B → C)</span>
+          </button>
+          <button type="button" class="mech-btn" id="mech-C" data-mech="C" onclick="toggleMech('C')" aria-pressed="false">
+            <div class="mech-top">
+              <span class="mech-code">C ペダル</span>
+              <span class="mech-state-pill" id="pill-C">OFF</span>
+            </div>
+            <span class="mech-desc">5・4弦 +全音<br>(D→E / G→A)</span>
+          </button>
+        </div>
+
+        <div class="mechanics-row-label">
+          <span>ニーレバー（Fレバー / Eレバー）</span>
+          <span class="mono-tag">KNEE LEVERS</span>
+        </div>
+        <div class="levers-grid">
+          <button type="button" class="mech-btn" id="mech-F" data-mech="F" onclick="toggleMech('F')" aria-pressed="false">
+            <div class="mech-top">
+              <span class="mech-code">F レバー</span>
+              <span class="mech-state-pill" id="pill-F">OFF</span>
+            </div>
+            <span class="mech-desc">8・4弦 +半音上げ (G → G#)</span>
+          </button>
+          <button type="button" class="mech-btn" id="mech-E" data-mech="E" onclick="toggleMech('E')" aria-pressed="false">
+            <div class="mech-top">
+              <span class="mech-code">E レバー</span>
+              <span class="mech-state-pill" id="pill-E">OFF</span>
+            </div>
+            <span class="mech-desc">8・4弦 -半音下げ (G → F#)</span>
+          </button>
+        </div>
+        <div class="mech-notice" id="mech-notice">各ボタンでペダル/レバーを個別にON・OFFして音程変化を確認できます。</div>
+      </div>
+    </section>
+
+    <!-- 3. 10-String Color-Coded Diagram -->
+    <section class="panel" aria-label="10弦カラーコードダイアグラム">
+      <div class="section-head">
+        <h2 class="section-title">3. 10弦ダイアグラム（3rdフレット）</h2>
+        <span class="section-hint">弦タップで単音試聴</span>
+      </div>
+
+      <div class="diagram-header-cols">
+        <span>弦</span>
+        <span>音名 / 変化</span>
+        <span style="text-align:right;">コードトーン</span>
+        <span style="text-align:center;">ガイド</span>
+      </div>
+
+      <div class="diagram-board" id="diagram-board">
+        <!-- Populated by JS: Strings 1 to 10 -->
+      </div>
+    </section>
+
+    <!-- 4. Grips & Color Legend -->
+    <section class="panel" aria-label="おすすめグリップと解説">
+      <div class="section-head">
+        <h2 class="section-title">4. おすすめグリップ試聴 &amp; ダイアグラム解説</h2>
+        <span class="section-hint">タップでグリップ音を試聴</span>
+      </div>
+
+      <div class="grips-list" id="grips-list">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="note-box" id="chord-note-box">
+        <p id="chord-note-text"></p>
+      </div>
+
+      <div class="legend-grid" aria-label="カラーコード凡例">
+        <div class="legend-item"><span class="legend-swatch swatch-play" aria-hidden="true"></span>弾く弦（開放・コード構成音）</div>
+        <div class="legend-item"><span class="legend-swatch swatch-A" aria-hidden="true"></span>Aペダル（10・5弦 +全音）</div>
+        <div class="legend-item"><span class="legend-swatch swatch-B" aria-hidden="true"></span>Bペダル（6・3弦 +半音）</div>
+        <div class="legend-item"><span class="legend-swatch swatch-C" aria-hidden="true"></span>Cペダル（5・4弦 +全音）</div>
+        <div class="legend-item"><span class="legend-swatch swatch-F" aria-hidden="true"></span>Fレバー（8・4弦 +半音）</div>
+        <div class="legend-item"><span class="legend-swatch swatch-E" aria-hidden="true"></span>Eレバー（8・4弦 -半音）</div>
+        <div class="legend-item"><span class="legend-swatch swatch-muted" aria-hidden="true"></span>ミュート弦 / 非アクティブ</div>
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <span>参照: Troy Brenningmeyer「Color Coded Chord Diagram for E9 Pedal Steel Guitar」</span>
+      <button type="button" class="btn-reset-link" id="btn-reset" onclick="resetDefaults(this)">初期状態に戻す</button>
+    </footer>
+  </main>
+
+  <api-shim></api-shim>
+  <script>
+    const NOTE_NAMES = [`C`, `C#`, `D`, `D#`, `E`, `F`, `F#`, `G`, `G#`, `A`, `A#`, `B`];
+
+    // Fret 3 (Key of G) base tuning in MIDI (Strings 1 to 10)
+    const BASE_STRINGS = [
+      { num: 1,  openNote: `A`,  midi: 69, gauge: `1px` },
+      { num: 2,  openNote: `F#`, midi: 66, gauge: `1.2px` },
+      { num: 3,  openNote: `B`,  midi: 71, gauge: `1.3px` },
+      { num: 4,  openNote: `G`,  midi: 67, gauge: `1.5px` },
+      { num: 5,  openNote: `D`,  midi: 62, gauge: `1.7px` },
+      { num: 6,  openNote: `B`,  midi: 59, gauge: `1.9px` },
+      { num: 7,  openNote: `A`,  midi: 57, gauge: `2.1px` },
+      { num: 8,  openNote: `G`,  midi: 55, gauge: `2.3px` },
+      { num: 9,  openNote: `F`,  midi: 53, gauge: `2.5px` },
+      { num: 10, openNote: `D`,  midi: 50, gauge: `2.8px` }
+    ];
+
+    const DIATONIC_CHORDS = {
+      'G': {
+        degree: `1`,
+        name: `G`,
+        fullName: `1 : G メジャー`,
+        rootMidiClass: 7,
+        mechs: { A: false, B: false, C: false, F: false, E: false },
+        playStrings: [3, 4, 5, 6, 8, 10],
+        mechSummary: `ペダル・レバーなし（Open / すべてグレーアウト）`,
+        grips: [
+          { label: `10-8-6`, strings: [10, 8, 6], desc: `低音トライアド` },
+          { label: `8-6-5`, strings: [8, 6, 5], desc: `中低音トライアド` },
+          { label: `6-5-4`, strings: [6, 5, 4], desc: `基本グリップ` },
+          { label: `5-4-3`, strings: [5, 4, 3], desc: `高音トライアド` }
+        ],
+        noteText: `ペダルやレバーを一切使わない基本の1コード（トニック）です。9弦（F）を加えるとG7、7弦や1弦（A）を加えると9th（2nd）の響きになります。`
+      },
+      'Am': {
+        degree: `2m`,
+        name: `Am`,
+        fullName: `2m : A マイナー`,
+        rootMidiClass: 9,
+        mechs: { A: false, B: true, C: true, F: false, E: false },
+        playStrings: [1, 3, 4, 5, 6, 7],
+        mechSummary: `Bペダル（緑）+ Cペダル（ピンク）を踏む`,
+        grips: [
+          { label: `7-6-5`, strings: [7, 6, 5], desc: `ルート開始（7弦）` },
+          { label: `6-5-4`, strings: [6, 5, 4], desc: `基本マイナー` },
+          { label: `5-4-3`, strings: [5, 4, 3], desc: `高音トライアド` },
+          { label: `4-3-1`, strings: [4, 3, 1], desc: `トップA含む` }
+        ],
+        noteText: `Bペダルが6・3弦（B→C＝短3度）を半音上げ、Cペダルが5弦（D→E＝5度）と4弦（G→A＝ルート）を全音上げます。7弦（A）からスタートするときれいなルートポジションで弾けます。`
+      },
+      'Bm': {
+        degree: `3m`,
+        name: `Bm`,
+        fullName: `3m : B マイナー`,
+        rootMidiClass: 11,
+        mechs: { A: false, B: false, C: false, F: false, E: true },
+        playStrings: [2, 3, 4, 5, 6, 8, 10],
+        mechSummary: `Eレバー（橙）のみ操作（A/B/C/FはOFF）`,
+        grips: [
+          { label: `10-8-6`, strings: [10, 8, 6], desc: `低音マイナー` },
+          { label: `8-6-5`, strings: [8, 6, 5], desc: `中音マイナー` },
+          { label: `6-5-4`, strings: [6, 5, 4], desc: `4弦=F#` },
+          { label: `5-4-3`, strings: [5, 4, 3], desc: `高音マイナー` }
+        ],
+        noteText: `ペダルとFレバーはすべてOFF（グレー）にし、Eレバーを右に倒すだけで8弦と4弦のG音が半音下がってF#になり、3m（Bm）へ変化します。`
+      },
+      'C': {
+        degree: `4`,
+        name: `C`,
+        fullName: `4 : C メジャー`,
+        rootMidiClass: 0,
+        mechs: { A: true, B: true, C: false, F: false, E: false },
+        playStrings: [3, 4, 5, 6, 8, 10],
+        mechSummary: `Aペダル（青）+ Bペダル（緑）を踏む`,
+        grips: [
+          { label: `10-8-6`, strings: [10, 8, 6], desc: `3rdベース` },
+          { label: `8-6-5`, strings: [8, 6, 5], desc: `中音グリップ` },
+          { label: `6-5-4`, strings: [6, 5, 4], desc: `基本ABペダル` },
+          { label: `7-6-5-4`, strings: [7, 6, 5, 4], desc: `C6（7弦追加）` }
+        ],
+        noteText: `Gコードと全く同じグリップ（10-8-6、8-6-5、6-5-4、5-4-3）のままA+Bペダルを踏むと4コード（C）になります。7弦（A）を加えるとC6thの響きになります。`
+      },
+      'D7': {
+        degree: `5`,
+        name: `D7`,
+        fullName: `5 : D7（ドミナント7th）`,
+        rootMidiClass: 2,
+        mechs: { A: false, B: true, C: false, F: false, E: true },
+        playStrings: [1, 2, 3, 4, 5, 6, 7, 8, 10],
+        mechSummary: `Bペダル（緑）+ Eレバー（橙）を同時に使う`,
+        grips: [
+          { label: `10-8-6-5`, strings: [10, 8, 6, 5], desc: `10弦ルートD7` },
+          { label: `8-6-5-4`, strings: [8, 6, 5, 4], desc: `中音D7` },
+          { label: `6-5-4-3`, strings: [6, 5, 4, 3], desc: `7th含む高音` },
+          { label: `10-8-5-3`, strings: [10, 8, 5, 3], desc: `開放的ボイシング` }
+        ],
+        noteText: `BペダルとEレバーの組み合わせでは、9弦（F）を除く1〜8弦・10弦のすべてがD7の構成音（D, F#, A, C）になります。ペダルとレバーを離せばそのまま1コード（G）へ解決します。`
+      },
+      'Em': {
+        degree: `6m`,
+        name: `Em`,
+        fullName: `6m : E マイナー`,
+        rootMidiClass: 4,
+        mechs: { A: true, B: false, C: false, F: false, E: false },
+        playStrings: [3, 4, 5, 6, 8, 10],
+        mechSummary: `Aペダル（青）のみを踏む`,
+        grips: [
+          { label: `10-8-6`, strings: [10, 8, 6], desc: `10弦ルートEm` },
+          { label: `8-6-5`, strings: [8, 6, 5], desc: `中音マイナー` },
+          { label: `6-5-4`, strings: [6, 5, 4], desc: `基本Em` },
+          { label: `5-4-3`, strings: [5, 4, 3], desc: `高音Em` }
+        ],
+        noteText: `Aペダルを踏むだけで10弦と5弦のDが全音上がってE（ルート）になります。1コード（G）や4コード（C）と同じ弦のグリップが使え、10弦に力強いルート音が配置されます。`
+      },
+      'F#dim': {
+        degree: `7dim`,
+        name: `F#dim`,
+        fullName: `7dim : F# ディミニッシュ`,
+        rootMidiClass: 6,
+        mechs: { A: false, B: true, C: false, F: false, E: true },
+        playStrings: [1, 2, 3, 4, 6, 7, 8],
+        mechSummary: `Bペダル（緑）+ Eレバー（橙）※5弦は弾かない`,
+        grips: [
+          { label: `8-7-6`, strings: [8, 7, 6], desc: `基本dim（5弦 skip）` },
+          { label: `8-6-4`, strings: [8, 6, 4], desc: `オクターブ含` },
+          { label: `6-4-3`, strings: [6, 4, 3], desc: `中音dim` },
+          { label: `4-3-2-1`, strings: [4, 3, 2, 1], desc: `高音dim` }
+        ],
+        noteText: `D7と同じ「Bペダル + Eレバー」の組み合わせですが、5弦（D）と9・10弦を弾かずに8-7-6弦などを選ぶと、F#（ルート）・A（b3）・C（b5）のF#ディミニッシュ・トライアドになります。`
+      }
+    };
+
+    // App State
+    let state = {
+      activeChordKey: `G`,
+      isCustomMode: false,
+      mechs: { A: false, B: false, C: false, F: false, E: false },
+      playStrings: [3, 4, 5, 6, 8, 10],
+      autoPlayOnSelect: true
+    };
+
+    // Web Audio API State
+    let audioCtx = null;
+    let masterGain = null;
+    let compressor = null;
+    let isAudioUnlocked = false;
+    let activeVoices = [];
+
+    function initAudioEngine() {
+      if (!audioCtx) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return false;
+        audioCtx = new AudioCtx();
+        compressor = audioCtx.createDynamicsCompressor();
+        compressor.threshold.setValueAtTime(-16, audioCtx.currentTime);
+        compressor.knee.setValueAtTime(18, audioCtx.currentTime);
+        compressor.ratio.setValueAtTime(4, audioCtx.currentTime);
+        compressor.attack.setValueAtTime(0.005, audioCtx.currentTime);
+        compressor.release.setValueAtTime(0.18, audioCtx.currentTime);
+
+        masterGain = audioCtx.createGain();
+        masterGain.gain.setValueAtTime(0.75, audioCtx.currentTime);
+
+        compressor.connect(masterGain);
+        masterGain.connect(audioCtx.destination);
+      }
+      if (audioCtx.state === `suspended`) {
+        audioCtx.resume();
+      }
+      isAudioUnlocked = true;
+      updateAudioUI();
+      return true;
+    }
+
+    function updateAudioUI() {
+      const bar = document.getElementById(`audio-bar`);
+      const btn = document.getElementById(`btn-sound-start`);
+      const txt = document.getElementById(`audio-status-text`);
+      if (!bar || !btn || !txt) return;
+      if (isAudioUnlocked) {
+        bar.classList.add(`is-ready`);
+        btn.classList.add(`is-unlocked`);
+        btn.textContent = `♪ 音声ON（テスト鳴動）`;
+        txt.textContent = `サウンド準備完了 — コードや弦をタップして試聴できます`;
+      } else {
+        bar.classList.remove(`is-ready`);
+        btn.classList.remove(`is-unlocked`);
+        btn.textContent = `サウンド有効化（音声スタート）`;
+        txt.textContent = `モバイル再生のため、まず音声を有効化してください`;
+      }
+    }
+
+    function enableAudio() {
+      const ok = initAudioEngine();
+      if (!ok) {
+        const txt = document.getElementById(`audio-status-text`);
+        if (txt) txt.textContent = `このブラウザは Web Audio API に対応していません`;
+        return;
+      }
+      // Play a gentle confirmation swell of the current chord
+      strumCurrentChord(true);
+    }
+
+    function midiToFreq(midi) {
+      return 440 * Math.pow(2, (midi - 69) / 12);
+    }
+
+    function stopOldVoices(limit) {
+      while (activeVoices.length > limit) {
+        const old = activeVoices.shift();
+        if (old && old.stopNow) old.stopNow();
+      }
+    }
+
+    function playStringTone(midi, delaySec, gainScale, durationSec, stringNum) {
+      if (!initAudioEngine()) return;
+      if (!audioCtx || !compressor) return;
+
+      stopOldVoices(22);
+
+      const now = audioCtx.currentTime + (delaySec || 0);
+      const dur = durationSec || 2.2;
+      const freq = midiToFreq(midi);
+
+      // Pedal steel voice: warm triangle + filtered sawtooth + gentle vibrato
+      const oscMain = audioCtx.createOscillator();
+      const oscWarm = audioCtx.createOscillator();
+      oscMain.type = `sawtooth`;
+      oscWarm.type = `triangle`;
+
+      oscMain.frequency.setValueAtTime(freq, now);
+      oscWarm.frequency.setValueAtTime(freq * 1.0012, now);
+
+      // Gentle bar vibrato LFO fading in after attack
+      const lfo = audioCtx.createOscillator();
+      const lfoGain = audioCtx.createGain();
+      lfo.type = `sine`;
+      lfo.frequency.setValueAtTime(5.1, now);
+      lfoGain.gain.setValueAtTime(0, now);
+      lfoGain.gain.linearRampToValueAtTime(freq * 0.0028, now + 0.45);
+      lfo.connect(lfoGain);
+      lfoGain.connect(oscMain.frequency);
+      lfoGain.connect(oscWarm.frequency);
+
+      // Lowpass filter for bright steel attack mellowing into singing sustain
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = `lowpass`;
+      filter.Q.setValueAtTime(1.4, now);
+      const startCutoff = Math.min(4200, freq * 6.5);
+      const sustainCutoff = Math.max(700, freq * 2.4);
+      filter.frequency.setValueAtTime(startCutoff, now);
+      filter.frequency.exponentialRampToValueAtTime(sustainCutoff, now + 0.38);
+
+      const mixMain = audioCtx.createGain();
+      const mixWarm = audioCtx.createGain();
+      mixMain.gain.setValueAtTime(0.45, now);
+      mixWarm.gain.setValueAtTime(0.65, now);
+
+      const env = audioCtx.createGain();
+      const peak = 0.24 * (gainScale || 1);
+      env.gain.setValueAtTime(0.0001, now);
+      env.gain.linearRampToValueAtTime(peak, now + 0.028);
+      env.gain.exponentialRampToValueAtTime(peak * 0.55, now + 0.26);
+      env.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+
+      oscMain.connect(mixMain);
+      oscWarm.connect(mixWarm);
+      mixMain.connect(filter);
+      mixWarm.connect(filter);
+      filter.connect(env);
+      env.connect(compressor);
+
+      oscMain.start(now);
+      oscWarm.start(now);
+      lfo.start(now);
+
+      const stopTime = now + dur + 0.05;
+      oscMain.stop(stopTime);
+      oscWarm.stop(stopTime);
+      lfo.stop(stopTime);
+
+      const voiceHandle = {
+        stopNow: function() {
+          try {
+            const t = audioCtx.currentTime;
+            env.gain.cancelScheduledValues(t);
+            env.gain.setTargetAtTime(0.0001, t, 0.03);
+            oscMain.stop(t + 0.12);
+            oscWarm.stop(t + 0.12);
+            lfo.stop(t + 0.12);
+          } catch (e) { /* already stopped */ }
+        }
+      };
+      activeVoices.push(voiceHandle);
+
+      if (stringNum) {
+        flashStringRow(stringNum, Math.max(0, (delaySec || 0) * 1000));
+      }
+    }
+
+    function flashStringRow(stringNum, delayMs) {
+      setTimeout(function() {
+        const row = document.getElementById(`str-row-` + stringNum);
+        if (!row) return;
+        row.classList.add(`is-ringing`);
+        setTimeout(function() {
+          row.classList.remove(`is-ringing`);
+        }, 420);
+      }, delayMs || 0);
+    }
+
+    // Compute pitch & pedal shift for each string
+    function computeStringInfo(baseStr, mechs) {
+      let shift = 0;
+      let driver = null; // 'A', 'B', 'C', 'F', 'E'
+
+      if (baseStr.num === 10 && mechs.A) {
+        shift += 2;
+        driver = `A`;
+      }
+      if (baseStr.num === 5) {
+        // On Emmons E9, A and C both pull 5th string up +2 semitones to the same stop
+        if (mechs.A && mechs.C) {
+          shift += 2;
+          driver = `C`;
+        } else if (mechs.C) {
+          shift += 2;
+          driver = `C`;
+        } else if (mechs.A) {
+          shift += 2;
+          driver = `A`;
+        }
+      }
+      if ((baseStr.num === 6 || baseStr.num === 3) && mechs.B) {
+        shift += 1;
+        driver = `B`;
+      }
+      if ((baseStr.num === 4 || baseStr.num === 8)) {
+        if (mechs.C && baseStr.num === 4) {
+          shift += 2;
+          driver = `C`;
+        }
+        if (mechs.F) {
+          shift += 1;
+          driver = driver || `F`;
+        } else if (mechs.E) {
+          shift -= 1;
+          driver = driver || `E`;
+        }
+      }
+
+      const finalMidi = baseStr.midi + shift;
+      const finalNote = NOTE_NAMES[((finalMidi % 12) + 12) % 12];
+      return {
+        num: baseStr.num,
+        openNote: baseStr.openNote,
+        finalNote: finalNote,
+        finalMidi: finalMidi,
+        shift: shift,
+        driver: driver,
+        gauge: baseStr.gauge
+      };
+    }
+
+    function getIntervalLabel(midi, rootClass) {
+      const semi = (((midi % 12) - rootClass) % 12 + 12) % 12;
+      const map = {
+        0: `R (ルート)`,
+        1: `b2 (b9)`,
+        2: `2 (9th)`,
+        3: `b3rd`,
+        4: `3rd`,
+        5: `4th (11)`,
+        6: `b5 (#11)`,
+        7: `5th`,
+        8: `#5 (b6)`,
+        9: `6th (13)`,
+        10: `b7th`,
+        11: `maj7`
+      };
+      return map[semi] || ``;
+    }
+
+    function detectCustomPreset(mechs) {
+      // Special non-diatonic highlight: A + F = E Major!
+      if (mechs.A && !mechs.B && !mechs.C && mechs.F && !mechs.E) {
+        return {
+          title: `カスタム: E メジャー (A + Fレバー)`,
+          sub: `Aペダル(青) + Fレバー(紫) で 10・8・6・5・4・3弦が E Major に変化`,
+          rootMidiClass: 4,
+          suggestedPlay: [3, 4, 5, 6, 8, 10],
+          noteText: `AペダルとFレバーを同時に使うと、3rdフレットから移動せずにEメジャー（VIメジャー）が得られます。`
+        };
+      }
+      if (!mechs.A && !mechs.B && !mechs.C && mechs.F && !mechs.E) {
+        return {
+          title: `カスタム: Fレバー単体テスト`,
+          sub: `Fレバー（紫）ON — 8弦・4弦の G が半音上がって G# に変化`,
+          rootMidiClass: 7,
+          suggestedPlay: [3, 4, 5, 6, 8, 10],
+          noteText: `Fレバーは左膝で8弦と4弦を半音上げるレバーです。G→G# の変化を単音または和音で確認できます（Aペダルと組み合わせるとEメジャーになります）。`
+        };
+      }
+      return null;
+    }
+
+    function syncPresetFromMechs() {
+      const m = state.mechs;
+      // Check if current mechs match activeChordKey
+      const currentPreset = DIATONIC_CHORDS[state.activeChordKey];
+      if (currentPreset &&
+          currentPreset.mechs.A === m.A &&
+          currentPreset.mechs.B === m.B &&
+          currentPreset.mechs.C === m.C &&
+          currentPreset.mechs.F === m.F &&
+          currentPreset.mechs.E === m.E) {
+        state.isCustomMode = false;
+        return;
+      }
+
+      // Check if matches any diatonic chord
+      const order = [`G`, `Am`, `Bm`, `C`, `D7`, `Em`, `F#dim`];
+      for (let i = 0; i < order.length; i++) {
+        const key = order[i];
+        const p = DIATONIC_CHORDS[key];
+        if (p.mechs.A === m.A &&
+            p.mechs.B === m.B &&
+            p.mechs.C === m.C &&
+            p.mechs.F === m.F &&
+            p.mechs.E === m.E) {
+          state.activeChordKey = key;
+          state.isCustomMode = false;
+          state.playStrings = p.playStrings.slice();
+          return;
+        }
+      }
+
+      // Otherwise custom combination
+      state.isCustomMode = true;
+      const customInfo = detectCustomPreset(m);
+      if (customInfo) {
+        state.playStrings = customInfo.suggestedPlay.slice();
+      }
+    }
+
+    // Handlers
+    function selectChord(chordKey) {
+      const preset = DIATONIC_CHORDS[chordKey];
+      if (!preset) return;
+      state.activeChordKey = chordKey;
+      state.isCustomMode = false;
+      state.mechs = {
+        A: preset.mechs.A,
+        B: preset.mechs.B,
+        C: preset.mechs.C,
+        F: preset.mechs.F,
+        E: preset.mechs.E
+      };
+      state.playStrings = preset.playStrings.slice();
+
+      const noticeEl = document.getElementById(`mech-notice`);
+      if (noticeEl) {
+        noticeEl.textContent = preset.mechSummary;
+      }
+
+      renderAll();
+      saveAppStateSafe();
+
+      if (state.autoPlayOnSelect) {
+        strumCurrentChord(false);
+      }
+    }
+
+    function toggleMech(mechKey) {
+      const noticeEl = document.getElementById(`mech-notice`);
+      let noticeText = `ペダル/レバー状態を手動で切り替えました。`;
+
+      if (mechKey === `F`) {
+        const nextVal = !state.mechs.F;
+        state.mechs.F = nextVal;
+        if (nextVal && state.mechs.E) {
+          state.mechs.E = false;
+          noticeText = `FレバーをONにしました（Eレバーは左右反対方向のため自動でOFF）。`;
+        } else if (nextVal) {
+          noticeText = `FレバーをONにしました（8弦・4弦 +半音）。`;
+        }
+      } else if (mechKey === `E`) {
+        const nextVal = !state.mechs.E;
+        state.mechs.E = nextVal;
+        if (nextVal && state.mechs.F) {
+          state.mechs.F = false;
+          noticeText = `EレバーをONにしました（Fレバーは左右反対方向のため自動でOFF）。`;
+        } else if (nextVal) {
+          noticeText = `EレバーをONにしました（8弦・4弦 -半音）。`;
+        }
+      } else {
+        state.mechs[mechKey] = !state.mechs[mechKey];
+        noticeText = mechKey + `ペダルを ` + (state.mechs[mechKey] ? `ON` : `OFF`) + ` にしました。`;
+      }
+
+      syncPresetFromMechs();
+      if (noticeEl) noticeEl.textContent = noticeText;
+
+      renderAll();
+      saveAppStateSafe();
+
+      if (state.autoPlayOnSelect) {
+        strumCurrentChord(false);
+      }
+    }
+
+    function toggleStringMute(strNum) {
+      const idx = state.playStrings.indexOf(strNum);
+      if (idx >= 0) {
+        state.playStrings.splice(idx, 1);
+      } else {
+        state.playStrings.push(strNum);
+        state.playStrings.sort(function(a, b) { return a - b; });
+      }
+      renderDiagram();
+      saveAppStateSafe();
+    }
+
+    function pluckSingleString(strNum) {
+      const base = BASE_STRINGS.find(function(s) { return s.num === strNum; });
+      if (!base) return;
+      const info = computeStringInfo(base, state.mechs);
+      playStringTone(info.finalMidi, 0, 1.15, 2.0, strNum);
+    }
+
+    function strumCurrentChord(forceUnlock) {
+      if (forceUnlock) {
+        initAudioEngine();
+      }
+      // Strum from low string (10) up to high string (1)
+      const sorted = state.playStrings.slice().sort(function(a, b) { return b - a; });
+      if (sorted.length === 0) return;
+
+      const gainScale = Math.min(1, 3.2 / Math.sqrt(sorted.length));
+      for (let i = 0; i < sorted.length; i++) {
+        const strNum = sorted[i];
+        const base = BASE_STRINGS.find(function(s) { return s.num === strNum; });
+        if (!base) continue;
+        const info = computeStringInfo(base, state.mechs);
+        playStringTone(info.finalMidi, i * 0.048, gainScale, 2.5, strNum);
+      }
+    }
+
+    function playGrip(stringsArr) {
+      if (!stringsArr || !stringsArr.length) return;
+      const sorted = stringsArr.slice().sort(function(a, b) { return b - a; });
+      const gainScale = Math.min(1, 3.0 / Math.sqrt(sorted.length));
+      for (let i = 0; i < sorted.length; i++) {
+        const strNum = sorted[i];
+        const base = BASE_STRINGS.find(function(s) { return s.num === strNum; });
+        if (!base) continue;
+        const info = computeStringInfo(base, state.mechs);
+        playStringTone(info.finalMidi, i * 0.055, gainScale, 2.3, strNum);
+      }
+    }
+
+    function toggleAutoPlay() {
+      state.autoPlayOnSelect = !state.autoPlayOnSelect;
+      renderReadout();
+      saveAppStateSafe();
+    }
+
+    function resetDefaults(btn) {
+      if (btn && btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.textContent = `もう一度タップで初期化`;
+        setTimeout(function() {
+          if (btn.dataset.armed === `true`) {
+            btn.dataset.armed = `false`;
+            btn.textContent = `初期状態に戻す`;
+          }
+        }, 3000);
+        return;
+      }
+      if (btn) {
+        btn.dataset.armed = `false`;
+        btn.textContent = `初期状態に戻す`;
+      }
+      state.autoPlayOnSelect = true;
+      selectChord(`G`);
+    }
+
+    // Rendering
+    function renderChordButtons() {
+      const grid = document.getElementById(`chord-grid`);
+      if (!grid) return;
+      const btns = grid.querySelectorAll(`.chord-btn`);
+      for (let i = 0; i < btns.length; i++) {
+        const b = btns[i];
+        const key = b.getAttribute(`data-chord`);
+        if (!state.isCustomMode && key === state.activeChordKey) {
+          b.classList.add(`is-active`);
+          b.setAttribute(`aria-pressed`, `true`);
+        } else {
+          b.classList.remove(`is-active`);
+          b.setAttribute(`aria-pressed`, `false`);
+        }
+      }
+    }
+
+    function renderReadout() {
+      const titleEl = document.getElementById(`readout-chord-title`);
+      const subEl = document.getElementById(`readout-chord-sub`);
+      const autoBtn = document.getElementById(`btn-autoplay`);
+
+      if (autoBtn) {
+        autoBtn.textContent = `切替時試聴: ` + (state.autoPlayOnSelect ? `ON` : `OFF`);
+        autoBtn.setAttribute(`aria-pressed`, state.autoPlayOnSelect ? `true` : `false`);
+        if (state.autoPlayOnSelect) {
+          autoBtn.classList.add(`is-on`);
+        } else {
+          autoBtn.classList.remove(`is-on`);
+        }
+      }
+
+      if (!titleEl || !subEl) return;
+
+      if (state.isCustomMode) {
+        const customInfo = detectCustomPreset(state.mechs);
+        if (customInfo) {
+          titleEl.textContent = customInfo.title;
+          subEl.textContent = customInfo.sub;
+        } else {
+          const activeList = [];
+          if (state.mechs.A) activeList.push(`A`);
+          if (state.mechs.B) activeList.push(`B`);
+          if (state.mechs.C) activeList.push(`C`);
+          if (state.mechs.F) activeList.push(`F`);
+          if (state.mechs.E) activeList.push(`E`);
+          titleEl.textContent = `カスタム組み合わせ`;
+          subEl.textContent = activeList.length ? `有効: ` + activeList.join(` + `) : `すべてOFF`;
+        }
+      } else {
+        const preset = DIATONIC_CHORDS[state.activeChordKey];
+        if (preset) {
+          titleEl.textContent = preset.fullName;
+          subEl.textContent = preset.mechSummary;
+        }
+      }
+    }
+
+    function renderMechs() {
+      const keys = [`A`, `B`, `C`, `F`, `E`];
+      for (let i = 0; i < keys.length; i++) {
+        const k = keys[i];
+        const btn = document.getElementById(`mech-` + k);
+        const pill = document.getElementById(`pill-` + k);
+        const active = !!state.mechs[k];
+        if (btn) {
+          if (active) {
+            btn.classList.add(`is-active`);
+            btn.setAttribute(`aria-pressed`, `true`);
+          } else {
+            btn.classList.remove(`is-active`);
+            btn.setAttribute(`aria-pressed`, `false`);
+          }
+        }
+        if (pill) {
+          pill.textContent = active ? `ON` : `OFF`;
+        }
+      }
+    }
+
+    function renderDiagram() {
+      const board = document.getElementById(`diagram-board`);
+      if (!board) return;
+
+      let rootClass = 7; // Default G
+      if (state.isCustomMode) {
+        const customInfo = detectCustomPreset(state.mechs);
+        rootClass = customInfo ? customInfo.rootMidiClass : 7;
+      } else if (DIATONIC_CHORDS[state.activeChordKey]) {
+        rootClass = DIATONIC_CHORDS[state.activeChordKey].rootMidiClass;
+      }
+
+      board.innerHTML = ``;
+
+      for (let i = 0; i < BASE_STRINGS.length; i++) {
+        const base = BASE_STRINGS[i];
+        const info = computeStringInfo(base, state.mechs);
+        const isPlayed = state.playStrings.indexOf(base.num) !== -1;
+        const intervalText = getIntervalLabel(info.finalMidi, rootClass);
+        const isRoot = (((info.finalMidi % 12) - rootClass + 12) % 12) === 0;
+
+        const row = document.createElement(`div`);
+        row.className = `string-row ` + (isPlayed ? `is-played` : `is-muted`);
+        row.id = `str-row-` + base.num;
+        row.style.setProperty(`--string-gauge`, base.gauge);
+
+        // 1. String Number Button (tap to pluck)
+        const numBtn = document.createElement(`button`);
+        numBtn.type = `button`;
+        numBtn.className = `str-num-btn`;
+        numBtn.textContent = String(base.num);
+        numBtn.setAttribute(`aria-label`, base.num + `弦を単音再生`);
+        numBtn.onclick = (function(n) {
+          return function() { pluckSingleString(n); };
+        })(base.num);
+
+        // 2. Note + Pedal Badge Button (tap to pluck)
+        const noteBtn = document.createElement(`button`);
+        noteBtn.type = `button`;
+        noteBtn.className = `str-note-btn`;
+        noteBtn.setAttribute(`aria-label`, base.num + `弦 ` + info.finalNote + ` を再生`);
+        noteBtn.onclick = (function(n) {
+          return function() { pluckSingleString(n); };
+        })(base.num);
+
+        const pill = document.createElement(`span`);
+        let pillToneClass = isPlayed ? `tone-play` : `tone-muted`;
+        if (info.driver) {
+          pillToneClass = `tone-` + info.driver;
+        }
+        pill.className = `note-pill ` + pillToneClass;
+
+        if (info.shift !== 0) {
+          const originSpan = document.createElement(`span`);
+          originSpan.className = `note-origin`;
+          originSpan.textContent = info.openNote + `→`;
+          pill.appendChild(originSpan);
+        }
+        const finalText = document.createTextNode(info.finalNote);
+        pill.appendChild(finalText);
+        noteBtn.appendChild(pill);
+
+        if (info.driver) {
+          const badge = document.createElement(`span`);
+          badge.className = `mech-badge badge-` + info.driver;
+          const sign = info.shift > 0 ? `+` : ``;
+          badge.textContent = info.driver + ` ` + sign + info.shift;
+          noteBtn.appendChild(badge);
+        }
+
+        // 3. Chord Tone Cell
+        const toneCell = document.createElement(`div`);
+        toneCell.className = `str-tone-cell` + (isRoot && isPlayed ? ` str-tone-root` : ``);
+        toneCell.textContent = intervalText;
+
+        // 4. Play / Mute Toggle
+        const muteBtn = document.createElement(`button`);
+        muteBtn.type = `button`;
+        muteBtn.className = `str-mute-btn` + (isPlayed ? `` : ` is-muted`);
+        muteBtn.textContent = isPlayed ? `弾く` : `ミュート`;
+        muteBtn.setAttribute(`aria-pressed`, isPlayed ? `true` : `false`);
+        muteBtn.setAttribute(`aria-label`, base.num + `弦の弾く/ミュート切替`);
+        muteBtn.onclick = (function(n) {
+          return function() { toggleStringMute(n); };
+        })(base.num);
+
+        row.appendChild(numBtn);
+        row.appendChild(noteBtn);
+        row.appendChild(toneCell);
+        row.appendChild(muteBtn);
+        board.appendChild(row);
+      }
+    }
+
+    function renderGripsAndNotes() {
+      const gripsEl = document.getElementById(`grips-list`);
+      const noteEl = document.getElementById(`chord-note-text`);
+      if (!gripsEl || !noteEl) return;
+
+      gripsEl.innerHTML = ``;
+
+      if (state.isCustomMode) {
+        const customInfo = detectCustomPreset(state.mechs);
+        noteEl.textContent = customInfo
+          ? customInfo.noteText
+          : `現在はカスタムのペダル・レバー状態です。各弦の「弾く / ミュート」ボタンで和音に含める弦を自由に構成し、「和音を鳴らす」で試聴できます。`;
+
+        const customBtn = document.createElement(`button`);
+        customBtn.type = `button`;
+        customBtn.className = `grip-btn`;
+        customBtn.textContent = `選択中の弦を試聴`;
+        customBtn.onclick = function() { playGrip(state.playStrings); };
+        gripsEl.appendChild(customBtn);
+        return;
+      }
+
+      const preset = DIATONIC_CHORDS[state.activeChordKey];
+      if (!preset) return;
+
+      noteEl.textContent = preset.noteText;
+
+      for (let i = 0; i < preset.grips.length; i++) {
+        const g = preset.grips[i];
+        const btn = document.createElement(`button`);
+        btn.type = `button`;
+        btn.className = `grip-btn`;
+        btn.textContent = g.label + ` `;
+        const sub = document.createElement(`span`);
+        sub.textContent = g.desc;
+        btn.appendChild(sub);
+        btn.onclick = (function(arr) {
+          return function() { playGrip(arr); };
+        })(g.strings);
+        gripsEl.appendChild(btn);
+      }
+    }
+
+    function renderAll() {
+      renderChordButtons();
+      renderReadout();
+      renderMechs();
+      renderDiagram();
+      renderGripsAndNotes();
+    }
+
+    // State persistence via Gemini Notebook Shim API
+    async function loadAppStateSafe() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === `object`) {
+            if (typeof saved.activeChordKey === `string` && DIATONIC_CHORDS[saved.activeChordKey]) {
+              state.activeChordKey = saved.activeChordKey;
+            }
+            if (typeof saved.isCustomMode === `boolean`) {
+              state.isCustomMode = saved.isCustomMode;
+            }
+            if (saved.mechs && typeof saved.mechs === `object`) {
+              state.mechs = {
+                A: !!saved.mechs.A,
+                B: !!saved.mechs.B,
+                C: !!saved.mechs.C,
+                F: !!saved.mechs.F,
+                E: !!saved.mechs.E
+              };
+            }
+            if (Array.isArray(saved.playStrings)) {
+              state.playStrings = saved.playStrings.filter(function(n) {
+                return typeof n === `number` && n >= 1 && n <= 10;
+              });
+            }
+            if (typeof saved.autoPlayOnSelect === `boolean`) {
+              state.autoPlayOnSelect = saved.autoPlayOnSelect;
+            }
+          }
+        }
+      } catch (e) {
+        /* fallback to default state */
+      }
+    }
+
+    async function saveAppStateSafe() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+          await window.notebookAppApi.setAppState({
+            activeChordKey: state.activeChordKey,
+            isCustomMode: state.isCustomMode,
+            mechs: state.mechs,
+            playStrings: state.playStrings,
+            autoPlayOnSelect: state.autoPlayOnSelect
+          });
+        }
+      } catch (e) {
+        /* ignore persistence errors in standalone preview */
+      }
+    }
+
+    async function bootstrapApp() {
+      await loadAppStateSafe();
+      renderAll();
+      updateAudioUI();
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+          window.notebookAppApi.notifyAppReady();
+        }
+      } catch (e) {
+        /* ignore */
+      }
+    }
+
+    bootstrapApp();
+  </script>
+</body>
+</html>
